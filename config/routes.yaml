@@ -1,0 +1,22 @@
+login:
+    path: /login
+    controller: App\Controller\SecurityController::login
+
+logout:
+    path: /login    
+
+home:
+    path: /
+    controller: App\Controller\DefaultController::home
+
+admin:
+    path: /admin
+    controller: App\Controller\DefaultController::admin
+
+driver:
+    path: /driver
+    controller: App\Controller\DefaultController::driver
+
+register:
+    path: /register
+    controller: App\Controller\RegistrationController::registerAdmin

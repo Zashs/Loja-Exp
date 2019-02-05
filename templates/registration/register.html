@@ -1,0 +1,98 @@
+<style>
+::-webkit-input-placeholder {opacity: 0.3}
+::-moz-placeholder {opacity: 0.3}
+:-ms-input-placeholder{opacity: 0.3}
+:-moz-placeholder {opacity: 0.3}
+.logo-md{height:104px;top:-47px;left:0px}
+</style>
+
+<section class="bgimg-3" style="min-height:400px;height:100vh">
+<div class="w3-padding-32"> 
+    <div class="w3-row-padding">
+      <div class="w3-col l3 m1 s0">&nbsp;</div>
+    </div>
+  </div>
+
+  <div class="w3-modal-content w3-card-8 w3-border" style="max-width:600px">
+    <div class="w3-white w3-center">
+      {{ form_start(form, {'attr': {'id': 'register-form'}})  }}
+        <div class="w3-padding-8 w3-sand w3-padding-small w3-xlarge w3-border-bottom">Registar Admin</div>
+        <div class="w3-content w3-padding-16 w3-row-padding w3-large">
+          
+          <div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.address) }}
+          </div><div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.location) }}
+          </div><div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.postalCode) }}
+          </div><div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.nif) }}
+          </div>
+
+          <div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.username) }}
+          </div>
+          <div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.email) }}
+          </div>
+          <div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.plainPassword.first) }}
+          </div>
+          <div class="w3-col m6 s12 w3-left-align">
+            {{ form_row(form.plainPassword.second) }}
+          </div>
+          <div class="w3-col s12 w3-center info w3-text-red">
+          </div>
+          <div class="w3-col s6 w3-margin-top">
+            <button type="reset" class="w3-btn-block w3-button w3-border w3-white"><i class="fa fa-eraser"></i> Limpar</button>
+          </div>
+          <div class="w3-col s6 w3-margin-top">
+            <span onclick="newRegister()" class="w3-btn-block w3-button w3-border w3-green"><i class="fa fa-check"></i> Registar</span>
+          </div>
+        </div>  
+      {{ form_end(form) }}
+    </div>
+  </div>  
+</section>
+
+<script type="text/javascript">
+  
+  function newRegister(){
+  obj =''
+  $('.w3-overlay').show()
+  $('.info').empty()
+  setTimeout(function(){
+      $.ajax({
+        url:"{{ path('register') }}",
+        type: "POST",
+        data: $('#register-form').serialize(),
+        cache: false,
+        success: function(data){
+          console.log(data)
+          $('.w3-overlay').hide()
+          if (data.result == 1){
+            console.log(data)
+          }
+          else if (data.result == 0){
+             for( k in data.data)
+              obj += k == 'plainPassword' ?  k +': '+data.data[k].first+'<br>' : k +': '+data.data[k]+'<br>'
+              $('.info').html(obj)
+          }
+
+          else if (data.result == -1){
+            for( k in data.data)
+              obj += k == 'plainPassword' ?  k +': '+data.data[k].first+'<br>' : k +': '+data.data[k]+'<br>'
+              $('.info').html(obj)
+          }
+        },
+        error:function(data){
+          console.log('err-->'+data)
+          $('.w3-overlay').hide()
+          $('#modal-error').removeClass('w3-hide')
+        }
+      })
+  }, 500)
+}
+
+
+</script>
