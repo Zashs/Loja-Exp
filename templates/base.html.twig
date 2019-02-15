@@ -4,12 +4,22 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
+		<!--Gallery - Nano Gallery 2-->
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+		<link href="https://unpkg.com/nanogallery2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
+		<script type="text/javascript" src="https://unpkg.com/nanogallery2/dist/jquery.nanogallery2.min.js"></script>
+		
+		<link href="{{ asset('assets/css/style.css') }}" rel="stylesheet" />
+		<link href="{{ asset('assets/css/font-awesome.min.css') }}" rel="stylesheet" />
+        <title>{% block title %}#1 Algarve Boat &amp; Cave Tours 2019 | Seasiren Tours{% endblock %}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-    	<h1>Home page</h1>
-		{% block content %}{% endblock %}
+		{% include 'home/menu.html.twig' %}
+		<div class="w3-content" style="max-width:1100px;margin-top:80px;margin-bottom:80px">
+			{% block content %}{% endblock %}
+		</div>
     </body>
+	{% include 'home/footer.html.twig' %}
 </html>

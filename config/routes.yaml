@@ -5,10 +5,6 @@ login:
 logout:
     path: /login    
 
-home:
-    path: /
-    controller: App\Controller\DefaultController::home
-
 admin:
     path: /admin
     controller: App\Controller\DefaultController::admin
@@ -20,3 +16,12 @@ driver:
 register:
     path: /register
     controller: App\Controller\RegistrationController::registerAdmin
+    
+#site seasiren
+home:
+    path: /
+    controller: App\Controller\SeasirenController::home
+
+translation:
+   path: /translation/{lang}/{page}
+   controller: App\Controller\SeasirenController::userTranslation
