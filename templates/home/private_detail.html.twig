@@ -1,0 +1,55 @@
+{% extends "base.html.twig" %}
+
+{% block content %}
+	{% if pageSub == 'gift_voucher' %}
+		<h1>{{pageDesc.title}}</h1>
+		<br>
+		<p>{{pageDesc.text_list.text_1}}</p>
+		<p>{{pageDesc.text_list.text_2}}</p>
+		<p>{{pageDesc.text_list.text_3}}</p>
+		<br>
+		<h3>{{pageDesc.payer.title}}</h3>
+		<br>
+		{{pageDesc.payer.name}}
+		<br>
+		{{pageDesc.payer.surname}}
+		<br>
+		{{pageDesc.payer.email}}
+		<br>
+		{{pageDesc.payer.telephone}}
+		<br>
+		{{pageDesc.payer.persons}}
+		<br>
+		{{pageDesc.payer.experiences_title}}
+		<select>
+		{% for experience in pageDesc.payer.experiences %}
+		  <option value="{{experience}}">{{experience}}</option>
+		{% endfor %}
+		</select> 
+		
+		<br>
+		<h3>{{pageDesc.destiny.title}}</h3>
+		<br>
+		{{pageDesc.destiny.name}}
+		<br>
+		{{pageDesc.destiny.surname}}
+		<br>
+		{{pageDesc.destiny.email}}
+		<br>
+		{{pageDesc.destiny.telephone}}
+		
+		
+	{% else %}
+		<h1>{{pageDesc.title}}</h1>
+		<!-- Comemtário se existir -->
+		{% if pageSub == 'private_photography_tour' %}
+			<h6 class="w3-center">"{{pageDesc.commemtary.text}}"</h6>
+			<h5 class="pull-right"><b>{{pageDesc.commemtary.author}}</b></h5>
+		{% endif %}
+		<br>
+		{% for i in 0..(pageDesc.text_list|length)-1 %}
+			<p>{{pageDesc.text_list[i].text}}</p>
+		{% endfor %}
+		<br>
+	{% endif %}
+{% endblock %}

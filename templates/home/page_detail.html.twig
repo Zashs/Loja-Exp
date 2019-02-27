@@ -1,0 +1,13 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+<h1>{{pageDesc.title}}<h1>
+	{{pageDesc.sub_title}}
+	<br>
+	
+	{% for i in 0..(pageDesc.text_list|length)-1 %}
+		<p>{{pageDesc.text_list[i].text}}</p>
+	{% endfor %}
+	
+
+{% endblock %}

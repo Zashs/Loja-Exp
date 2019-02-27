@@ -12,7 +12,7 @@ return array(
 		'menu_experiences' => array(
 			'experiences'=> 'Experiências',
 			'kayak' => 'Passeio Caiaque',
-			'unlimited' => 'Passeio Derradeiro',
+			'ultimate' => 'Passeio Derradeiro',
 			'benagil_cave' => 'Caverna Benagil',
 			'benagil_sunset' => 'Por do sol Benagil',
 		),
@@ -56,6 +56,7 @@ return array(
 	'page_detail' => array(
 		'about_us' => array(
 			'title' => 'SOBRE NÓS',
+			'sub_title' => 'Seasiren Tours',
 			'text_list' => array(
 				'text_1' => 'Os nossos passeios nasceram da nossa paixão por esta bela região.',
 				'text_2' => 'Por isso, e de acordo com a nossa tradição acolhedora, estamos constantemente a desenvolver experiências autênticas para o seu lazer, focamo-nos continuamente no bem-estar dos nossos clientes.',
@@ -84,11 +85,11 @@ return array(
 		),
 		'contacts' => array(
 			'title' => 'CONTACTE-NOS',
-			'sub-title' => 'ESTAMOS CÁ PARA AJUDÁ-LO',
+			'sub_title' => 'ESTAMOS CÁ PARA AJUDÁ-LO',
 			'text_list' => array(
 				'text_1' => 'Tem dúvidas sobre nossos passeios? Prometemos informá-lo o melhor possível.',
 				'text_2' => 'Exponha todas as suas questões sobre os nossos tours, estamos aqui para ajudá-lo.',
-				'text_3' => 'Esteja à vontade para entrar em contato connosco a qualquer momento.',
+				'text_3' => 'Esteja à vontade para entrar em contato connosco a qualquer momento.'
 			),
 			'form' => array(
 				'name' => 'nome',

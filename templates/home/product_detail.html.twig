@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+{% block content %}
+
+	<h1>{{pageDesc.title}}</h1>
+	<br>
+	{% for i in 0..(pageDesc.text_list|length)-1 %}
+		<p>{{pageDesc.text_list[i].text}}</p>
+	{% endfor %}
+	<br>
+	{{pageDesc.price}}
+	<br>
+	{{pageDesc.book}}
+	<br>
+	
+	<!-- info para pdf -->
+	<h3>{{pageDesc.pdf_info.title}}</h3>
+	<a href="{{pageDesc.pdf_info.link}}">{{pageDesc.pdf_info.text_1}}</a>
+	
+	<!-- informação adicional -->
+	<h2>{{pageDesc.add_info.title}}</h2>
+	<ul>
+		{% for i in 0..(pageDesc.add_info.text_list|length)-1 %}
+			<li>{{pageDesc.add_info.text_list[i].text}}</li>
+		{% endfor %}
+	</ul>
+	
+	<!-- politica de cancelamento -->
+	<h2>{{pageDesc.cancel_pol.title}}</h2>
+	<ul>
+		<li>{{pageDesc.cancel_pol.text_list.text_1}}</li>
+		<li>{{pageDesc.cancel_pol.text_list.text_2}}</li>
+		<li>{{pageDesc.cancel_pol.text_list.text_3}}</li>
+	</ul>
+	
+{% endblock %}

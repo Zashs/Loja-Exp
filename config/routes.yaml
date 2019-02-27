@@ -1,18 +1,18 @@
 login:
     path: /login
     controller: App\Controller\SecurityController::login
-
+    
 logout:
     path: /login    
-
+    
 admin:
     path: /admin
     controller: App\Controller\DefaultController::admin
-
+    
 driver:
     path: /driver
     controller: App\Controller\DefaultController::driver
-
+    
 register:
     path: /register
     controller: App\Controller\RegistrationController::registerAdmin
@@ -23,5 +23,18 @@ home:
     controller: App\Controller\SeasirenController::home
 
 translation:
-   path: /translation/{lang}/{page}
-   controller: App\Controller\SeasirenController::userTranslation
+    path: /translation/{lang}/{page}/{pageSub}
+    controller: App\Controller\SeasirenController::userTranslation
+    
+page_detail:
+    path: /page/{page}/{pageSub}
+    controller: App\Controller\SeasirenController::pageDetail
+    
+product_detail:
+    path: /product/{page}/{pageSub}
+    controller: App\Controller\SeasirenController::productDetail
+    
+private_detail:
+    path: /private/{page}/{pageSub}
+    controller: App\Controller\SeasirenController::privateDetail
+    

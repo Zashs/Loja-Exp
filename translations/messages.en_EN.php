@@ -12,7 +12,7 @@ return array(
 		'menu_experiences' => array(
 			'experiences'=> 'Experiences',
 			'kayak' => 'Kayak Tour',
-			'unlimited' => 'Ulimate Tour',
+			'ultimate' => 'Ulimate Tour',
 			'benagil_cave' => 'Benagil Cave',
 			'benagil_sunset' => 'Benagil Sunset',
 		),
@@ -56,6 +56,7 @@ return array(
 	'page_detail' => array(
 		'about_us' => array(
 			'title' => 'ABOUT US',
+			'sub_title' => 'Seasiren Tours',
 			'text_list' => array(
 				'text_1' => 'Our tours were born out of our passion for this beautiful region.',
 				'text_2' => 'Hence, and in keeping with our easy going and friendly tradition of embracing and welcoming visitors., we are constantly developing authentic experiences for your leisure, continuously focusing on your welfare and excellence.',
@@ -84,11 +85,11 @@ return array(
 		),
 		'contacts' => array(
 			'title' => 'CONTACT US',
-			'sub-title' => 'WE ARE HERE TO HELP',
+			'sub_title' => 'WE ARE HERE TO HELP',
 			'text_list' => array(
 				'text_1' => 'Have questions about our tours? Our team will ensure you are receiving the best information possible.',
 				'text_2' => 'From basic questions to complex compliance inquiries, we are here to help you.',
-				'text_3' => 'Please feel free to contact us anytime.',
+				'text_3' => 'Please feel free to contact us anytime.'
 			),
 			'form' => array(
 				'name' => 'name',
