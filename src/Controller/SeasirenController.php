@@ -46,9 +46,9 @@ class SeasirenController extends AbstractController
 		);
 		
 		$products = array();
-		$products[] = array('title' => $translator->trans('home.cave_costal.title_unlimited'),'text' => $translator->trans('home.cave_costal.text_unlimited'),'image' => '/assets/images/pano-thumb.jpg');
-		$products[] = array('title' => $translator->trans('home.cave_costal.title_benagil_cave'),'text' => $translator->trans('home.cave_costal.text_benagil_cave'),'image' => '/assets/images/benagil-thumb.jpg');
-		$products[] = array('title' => $translator->trans('home.cave_costal.title_benagil_sunset'),'text' => $translator->trans('home.cave_costal.text_benagil_sunset'),'image' => '/assets/images/sunset-thum-3.jpg');
+		$products[] = array('title' => $translator->trans('home.cave_costal.title_unlimited'),'text' => $translator->trans('home.cave_costal.text_unlimited'),'image' => "pano-thumb.jpg");
+		$products[] = array('title' => $translator->trans('home.cave_costal.title_benagil_cave'),'text' => $translator->trans('home.cave_costal.text_benagil_cave'),'image' => "benagil-thumb.jpg");
+		$products[] = array('title' => $translator->trans('home.cave_costal.title_benagil_sunset'),'text' => $translator->trans('home.cave_costal.text_benagil_sunset'),'image' => "sunset-thum-3.jpg");
 		
 		$privates = array();
 		$privates[] = array('desc' => $translator->trans('home.private.title_list.kids_party'), 'image' => 'berlin1t.jpg', 'href' => 'kids_birthday_party');
