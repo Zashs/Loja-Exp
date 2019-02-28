@@ -4,18 +4,14 @@
 <div style="background: #fdf5e6;border: 1px solid #999;max-width:500px; margin:0 auto">
 <div style="padding:12px 8px">	
 <img src='{{ logo }}' width=80 style="margin-top: -52px">
-<h4>Hi {{ username }} your Booking #{{ id }}, is <b>{{ status }}</b> soon you'll receive an email with the current status.<h4/>
-Booking details:<br>
+<h4>Hi {{ username }}, came here to ask for information.</h4>
+Details Request for information: <br>
 <hr>
 <p>
-Tour: {{ tour }}<br>
-Date: {{ date }} @ {{ hour }}<br>
-Adult: {{ adult }}<br>
-Children: {{ children }}<br>
-Baby: {{ baby }}<br>
-{% if wp %}
-Warranty Payment: Yes
-{% endif %}
+<b>Name</b>: {{name}} <br>
+<b>Email</b>: {{email}} <br>
+<b>Telephone</b>: {{telephone}} <br>
+<b>Message</b>: {{message}} <br>
 <hr>
 </p>
 <p>
@@ -23,4 +19,5 @@ Thank you, Seasiren Tours.
 </p>
 </div>
 </div>
+
 </body>

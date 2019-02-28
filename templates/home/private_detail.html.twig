@@ -25,7 +25,7 @@
 								</div>
 							</div>
 						</div>
-						<form action="">
+						<form id="formVoucher">
 							<div class="w3-col l6 m12 s12 w3-padding-small">
 								<div class="w3-center">
 									<h2>{{pageDesc.payer.title}}</h2>
@@ -33,19 +33,19 @@
 								<div class="w3-card-4">	
 									<div class="w3-padding-large">
 										<div>
-											<label for="payer_name">{{pageDesc.payer.name}}</label>
+											<label for="payer_name">{{pageDesc.payer.name}}</label><label class="payer_name w3-text-red w3-hide w3-right"></label>
 											<input type="text" id="payer_name" name="payer_name" placeholder="{{pageDesc.payer.name}}">
 										</div>
 										<div>
-											<label for="payer_surname">{{pageDesc.payer.surname}}</label>
+											<label for="payer_surname">{{pageDesc.payer.surname}}</label><label class="payer_surname w3-text-red w3-hide w3-right"></label>
 											<input type="text" id="payer_surname" name="payer_surname" placeholder="{{pageDesc.payer.surname}}">
 										</div>
 										<div>
-											<label for="payer_email">{{pageDesc.payer.email}}</label>
+											<label for="payer_email">{{pageDesc.payer.email}}</label><label class="payer_email w3-text-red w3-hide w3-right"></label>
 											<input type="text" id="payer_email" name="payer_email" placeholder="{{pageDesc.payer.email}}">
 										</div>
 										<div>
-											<label for="payer_telephone">{{pageDesc.payer.telephone}}</label>
+											<label for="payer_telephone">{{pageDesc.payer.telephone}}</label><label class="payer_telephone w3-text-red w3-hide w3-right"></label>
 											<input type="text" id="payer_telephone" name="payer_telephone" placeholder="{{pageDesc.payer.telephone}}">
 										</div>
 									</div>
@@ -58,20 +58,20 @@
 								<div class="w3-card-4">	
 									<div class="w3-padding-large">
 										<div>
-											<label for="payer_name">{{pageDesc.destiny.name}}</label>
-											<input type="text" id="payer_name" name="payer_name" placeholder="{{pageDesc.destiny.name}}">
+											<label for="destiny_name">{{pageDesc.destiny.name}}</label><label class="destiny_name w3-text-red w3-hide w3-right"></label>
+											<input type="text" id="destiny_name" name="destiny_name" placeholder="{{pageDesc.destiny.name}}">
 										</div>
 										<div>
-											<label for="payer_surname">{{pageDesc.destiny.surname}}</label>
-											<input type="text" id="payer_surname" name="payer_surname" placeholder="{{pageDesc.destiny.surname}}">
+											<label for="destiny_surname">{{pageDesc.destiny.surname}}</label><label class="destiny_surname w3-text-red w3-hide w3-right"></label>
+											<input type="text" id="destiny_surname" name="destiny_surname" placeholder="{{pageDesc.destiny.surname}}">
 										</div>
 										<div>
-											<label for="payer_email">{{pageDesc.destiny.email}}</label>
-											<input type="text" id="payer_email" name="payer_email" placeholder="{{pageDesc.destiny.email}}">
+											<label for="destiny_email">{{pageDesc.destiny.email}}</label><label class="destiny_email w3-text-red w3-hide w3-right"></label>
+											<input type="text" id="destiny_email" name="destiny_email" placeholder="{{pageDesc.destiny.email}}">
 										</div>
 										<div>
-											<label for="payer_telephone">{{pageDesc.destiny.telephone}}</label>
-											<input type="text" id="payer_telephone" name="payer_telephone" placeholder="{{pageDesc.destiny.telephone}}">
+											<label for="destiny_telephone">{{pageDesc.destiny.telephone}}</label><label class="destiny_telephone w3-text-red w3-hide w3-right"></label>
+											<input type="text" id="destiny_telephone" name="destiny_telephone" placeholder="{{pageDesc.destiny.telephone}}">
 										</div>
 									</div>
 								</div>
@@ -80,30 +80,36 @@
 								<div class="w3-card-4">
 									<div class="w3-padding-large" style="display:block;">
 										<div>
-											<label for="payer_name">{{pageDesc.payer.persons}}</label>
+											<label for="payer_persons">{{pageDesc.payer.persons}}</label><label class="payer_persons w3-text-red w3-hide w3-right"></label>
 											<input type="text" id="payer_persons" name="payer_persons" placeholder="{{pageDesc.payer.persons}}">
 										</div>
 										<div>
-											<label for="payer_experiences">{{pageDesc.payer.experiences_title}}</label>
+											<label for="payer_experiences">{{pageDesc.payer.experiences_title}}</label><label class="payer_experiences w3-text-red w3-hide w3-right"></label>
 											<select id="payer_experiences" name="payer_experiences">
+												<option selected value="{{pageDesc.payer.experiences_label}}">{{pageDesc.payer.experiences_label}}</option>
 												{% for experience in pageDesc.payer.experiences %}
 													<option value="{{experience}}">{{experience}}</option>
 												{% endfor %}
 											</select>
+										</div>
+										<div>
+											<label style="text-transform: capitalize;" for="payer_obs">{{pageDesc.payer.obs}}</label>
+											<textarea class="w3-large w3-input w3-round w3-border" rows="5"id="payer_obs" name="payer_obs" placeholder="{{pageDesc.payer.obs_label}}"></textarea>
 										</div>
 									</div>
 								</div>
 							</div>
 							<div class="w3-col l12 m12 s12">
 								<div class="w3-padding-large pull-right">
-									<button type="submit" class="w3-btn w3-green">Enviar(falta traduçao)</button>
+									<span onclick="formVoucher()" class="w3-btn w3-green">{% trans %}page_detail.contacts.form.send{% endtrans %}</span>
 								</div>
+								<label class="contact_success w3-text-green w3-hide w3-right"></label>
 							</div>
 						</form>
 					</div>
 				</div>
 			</div>
-		</div>	
+		</div>
 	{% else %}
 		<!-- Páginas Private-->
 		<div class="w3-row">

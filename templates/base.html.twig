@@ -4,7 +4,6 @@
         <meta charset="UTF-8">
         <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
-        <!--link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"-->
 		<!--Gallery - Nano Gallery 2-->
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 		<link href="https://unpkg.com/nanogallery2/dist/css/nanogallery2.min.css" rel="stylesheet" type="text/css">
@@ -45,7 +44,7 @@
 							</div>
 						</div>
 					</div>
-					<form action="">
+					<form id="formContact">
 						<div class="w3-col l12 m12 s12">
 							<div class="w3-padding">
 								<h4>{{pageInfo.contacts.sub_title}}</h4>
@@ -54,20 +53,24 @@
 								<div class="w3-padding-large">
 									<div>
 										<label style="text-transform: capitalize;" for="contact_name">{{pageInfo.contacts.form.name}}</label>
-										<input type="text" id="contact_name" name="contact_name" placeholder="{{pageInfo.contacts.form.name}}">
+										<input type="text" id="contact_name" name="contact_name" placeholder="{{pageInfo.contacts.form.name}}"><label class="contact_name w3-text-red w3-hide w3-right"></label>
 									</div>
 									<div>
-										<label style="text-transform: capitalize;" for="contact_email">{{pageInfo.contacts.form.email}}</label>
+										<label style="text-transform: capitalize;" for="contact_email">{{pageInfo.contacts.form.email}}</label><label class="contact_email w3-text-red w3-hide w3-right"></label>
 										<input type="text" id="contact_email" name="contact_email" placeholder="{{pageInfo.contacts.form.email}}">
 									</div>
 									<div>
-										<label style="text-transform: capitalize;" for="contact_message">{{pageInfo.contacts.form.message}}</label>
-										<input type="text" id="contact_message" name="contact_message" placeholder="{{pageInfo.contacts.form.message}}">
+										<label style="text-transform: capitalize;" for="contact_telephone">{{pageInfo.contacts.form.telephone}}</label><label class="contact_telephone w3-text-red w3-hide w3-right"></label>
+										<input type="text" id="contact_telephone" name="contact_telephone" placeholder="{{pageInfo.contacts.form.telephone}}">
+									</div>
+									<div>
+										<label style="text-transform: capitalize;" for="contact_message">{{pageInfo.contacts.form.message}}</label><label class="contact_message w3-text-red w3-hide w3-right"></label>
+										<textarea class="w3-large w3-input w3-round w3-border" rows="5"id="contact_message" name="contact_message" placeholder="{{pageInfo.contacts.form.message}}"></textarea>
 									</div>
 								</div>
 							</div>
 							<div class="w3-padding pull-right">
-								<button type="submit" class="w3-btn w3-green">{{pageInfo.contacts.form.send}}</button>
+								<span onclick="formContact()" class="w3-btn w3-green">{{pageInfo.contacts.form.send}}</span>
 							</div>
 						</div>
 					</form>

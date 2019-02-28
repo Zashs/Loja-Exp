@@ -94,8 +94,13 @@ return array(
 			'form' => array(
 				'name' => 'name',
 				'email' => 'email',
+				'telephone' => 'telephone',
 				'message' => 'message',
 				'send' => 'Send',
+				'subject' => 'Information Request',
+				'required' => 'Required field',
+				'invalid' => 'Invalid Filling',
+				'success' => 'Contact Successful',
 			),
 		),
 	),
@@ -332,7 +337,11 @@ return array(
 					'email' => 'Email',
 					'telephone' => 'Telephone',
 					'persons' => 'Nº of Persons',
-					'experiences_title' => 'Tours',
+					'obs' => 'Observations',
+					'obs_label' => '(Optional)',
+					'subject' => 'Voucher Request',
+					'experiences_title' => 'Tour',
+					'experiences_label' => 'Select Tour',
 					'experiences' => array(
 						'1' => 'Catamaran Kayak Tours',
 						'2' => 'Ultimate Tour',
@@ -369,7 +378,7 @@ return array(
 		'private_photography_tour' => array(
 			'title' => 'Private Photography Tours',
 			'commemtary' => array(
-				'text' => '<i>“You don´t take a photograph, You Make it”</i>',
+				'text' => 'You don´t take a photograph, You Make it',
 				'author' => 'Ansal Adams',
 			),
 			'text_list' => array(

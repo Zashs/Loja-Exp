@@ -39,6 +39,7 @@ class SeasirenController extends AbstractController
 				'form' => array(
 					'name' => $translator->trans('page_detail.contacts.form.name'),
 					'email' => $translator->trans('page_detail.contacts.form.email'),
+					'telephone' => $translator->trans('page_detail.contacts.form.telephone'),
 					'message' => $translator->trans('page_detail.contacts.form.message'),
 					'send' => $translator->trans('page_detail.contacts.form.send'),
 				),
@@ -95,6 +96,7 @@ class SeasirenController extends AbstractController
 				$pageDesc['form'] = array(
 										'name' => $translator->trans('page_detail.'.$pageSub.'.form.name'),
 										'email' => $translator->trans('page_detail.'.$pageSub.'.form.email'),
+										'telephone' => $translator->trans('page_detail.contacts.form.telephone'),
 										'message' => $translator->trans('page_detail.'.$pageSub.'.form.message'),
 										'send' => $translator->trans('page_detail.'.$pageSub.'.form.send')
 									);
@@ -199,7 +201,10 @@ class SeasirenController extends AbstractController
 					'email' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.email'),
 					'telephone' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.telephone'),
 					'persons' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.persons'),
+					'obs' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.obs'),
+					'obs_label' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.obs_label'),
 					'experiences_title' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.experiences_title'),
+					'experiences_label' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.experiences_label'),
 					'experiences' => array(
 						'1' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.experiences.1'),
 						'2' => $translator->trans('private_detail.'.$pageSub.'.text_list.payer.experiences.2'),
@@ -277,7 +282,8 @@ class SeasirenController extends AbstractController
         //IF FIELDS IS NULL PUT IN ARRAY AND SEND BACK TO USER
         $request->request->get('contact_name') ? $name = $request->request->get('contact_name') : $err[] = 'contact_name';
         $request->request->get('contact_email') ? $email = $request->request->get('contact_email') : $err[] = 'contact_email';
-        $request->request->get('contact_message') ? $address = $request->request->get('contact_message') : $err[] = 'contact_message';
+        $request->request->get('contact_telephone') ? $telephone = $request->request->get('contact_telephone') : $err[] = 'contact_telephone';
+        $request->request->get('contact_message') ? $information = $request->request->get('contact_message') : $err[] = 'contact_message';
         
         if($err){
             $response = array(
@@ -292,7 +298,7 @@ class SeasirenController extends AbstractController
         //NO FAKE DATA
         $this->noFakeName($name) == 1 ? $err[] = 'contact_name' : false;
 		$this->noFakeEmails($email) == 1 ? $err[] = 'contact_email' : false;
-        //$this->noFakeTelephone($telephone) == 1 ? $err[] = 'TELEPHONE_INVALID' : false;
+        $this->noFakeTelephone($telephone) == 1 ? $err[] = 'contact_telephone' : false;
         if($err){
             $response = array(
                 'status' => 2,
@@ -311,7 +317,7 @@ class SeasirenController extends AbstractController
 		
 			$mailer = new \Swift_Mailer($transport);
 						
-			$subject ='Pedido de Informação';
+			$subject = $translator->trans('page_detail.contacts.form.subject');
 						
 			$message = (new \Swift_Message($subject))
             ->setFrom([$_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME']])
@@ -321,10 +327,112 @@ class SeasirenController extends AbstractController
                 $this->renderView(
                     'emails/emailContact-'.$locale.'.html.twig',
                     array(
-                        'name' => $request->request->get('contact_name'),
-                        'email' => $request->request->get('contact_email'),
-                        'message' => $request->request->get('contact_message'),
+                        'name' => $name,
+                        'email' => $email,
+                        'telephone' => $telephone,
+                        'message' => $information,
                         'logo' => '/assets/images/logo-branco-seasiren-01.svg'
+                    )
+                ),
+                'text/html'
+            );
+            $send = $mailer->send($message);
+        }
+        
+        
+        $response = array(
+            'status' => 1,
+            'message' => 'all valid',
+            'data' =>  'success',
+            'mail' => $send,
+            'locale' => $locale
+		);
+        
+        return new JsonResponse($response);
+        
+    }
+	
+	public function sendVoucher(Request $request, \Swift_Mailer $mailer)
+	{
+                    
+        $err = array();
+        $locale = $request->getlocale();
+        
+        //IF FIELDS IS NULL PUT IN ARRAY AND SEND BACK TO USER
+		//PAYER
+        $request->request->get('payer_name') ? $payerName = $request->request->get('payer_name') : $err[] = 'payer_name';
+        $request->request->get('payer_surname') ? $payerSurname = $request->request->get('payer_name') : $err[] = 'payer_surname';
+        $request->request->get('payer_email') ? $payerEmail = $request->request->get('payer_email') : $err[] = 'payer_email';
+        $request->request->get('payer_telephone') ? $payerTelephone = $request->request->get('payer_telephone') : $err[] = 'payer_telephone';
+		//DESTINY
+		$request->request->get('destiny_name') ? $destinyName = $request->request->get('destiny_name') : $err[] = 'destiny_name';
+        $request->request->get('destiny_surname') ? $destinySurname = $request->request->get('destiny_name') : $err[] = 'destiny_surname';
+        $request->request->get('destiny_email') ? $destinyEmail = $request->request->get('destiny_email') : $err[] = 'destiny_email';
+        $request->request->get('destiny_telephone') ? $destinyTelephone = $request->request->get('destiny_telephone') : $err[] = 'destiny_telephone';
+		//EXTRA INFO
+        $request->request->get('payer_persons') ? $numberPersons = $request->request->get('payer_message') : $err[] = 'payer_persons';
+        $request->request->get('payer_experiences') && strpos($request->request->get('payer_experiences'), 'Selec') === false ? $experience = $request->request->get('payer_message') : $err[] = 'payer_experiences';
+        $request->request->get('payer_obs') ? $observations = $request->request->get('payer_message') : $observations = '';
+        
+        if($err){
+            $response = array(
+                'status' => 0,
+                'message' => 'fields empty',
+                'data' => $err,
+                'mail' => null,
+                'locale' => $locale
+            );
+            return new JsonResponse($response);
+        }
+        //NO FAKE DATA
+        $this->noFakeName($name) == 1 ? $err[] = 'payer_name' : false;
+        $this->noFakeName($name) == 1 ? $err[] = 'payer_surname' : false;
+        $this->noFakeName($name) == 1 ? $err[] = 'destiny_name' : false;
+        $this->noFakeName($name) == 1 ? $err[] = 'destiny_surname' : false;
+		$this->noFakeEmails($email) == 1 ? $err[] = 'payer_email' : false;
+		$this->noFakeEmails($email) == 1 ? $err[] = 'destiny_email' : false;
+        $this->noFakeTelephone($telephone) == 1 ? $err[] = 'payer_telephone' : false;
+        $this->noFakeTelephone($telephone) == 1 ? $err[] = 'destiny_telephone' : false;
+        if($err){
+            $response = array(
+                'status' => 2,
+                'message' => 'invalid fields',
+                'data' => $err,
+                'mail' => null,
+                'locale' => $locale
+            );
+            return new JsonResponse($response);
+        }
+        else
+		{
+			$transport = (new \Swift_SmtpTransport($_ENV['EMAIL_SMTP'], $_ENV['EMAIL_PORT'], $_ENV['EMAIL_CERTIFICADE']))
+            ->setUsername($_ENV['EMAIL'])
+            ->setPassword($_ENV['EMAIL_PASS']);
+		
+			$mailer = new \Swift_Mailer($transport);
+						
+			$subject = $translator->trans('private_detail.gift_voucher.text_list.payer.subject');
+						
+			$message = (new \Swift_Message($subject))
+            ->setFrom([$_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME']])
+            ->setTo([$payerEmail => $payerName.''.$payerSurame, $_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME'] ])
+            ->addPart($subject, 'text/plain')
+            ->setBody(
+                $this->renderView(
+                    'emails/emailVoucher-'.$locale.'.html.twig',
+                    array(
+                        'payer_name' => $payerName,
+                        'payer_surname' => $payerSurame,
+                        'payer_email' => $payerEmail,
+                        'payer_telephone' => $payerTelephone,
+                        'destiny_name' => $destinyName,
+                        'destiny_surname' => $destinySurname,
+                        'destiny_email' => $destinyEmail,
+                        'destiny_telephone' => $destinyTelephone,
+						'number_persons' => $numberPersons,
+						'experience' => $experience,
+                        'observations' => $observations,
+                        'logo' => "{{ asset('assets/images/logo-branco-seasiren-01.svg') }}"
                     )
                 ),
                 'text/html'

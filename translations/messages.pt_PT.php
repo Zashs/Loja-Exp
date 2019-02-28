@@ -94,8 +94,13 @@ return array(
 			'form' => array(
 				'name' => 'nome',
 				'email' => 'email',
+				'telephone' => 'telefone',
 				'message' => 'mensagem',
 				'send' => 'Enviar',
+				'subject' => 'Pedido de Informação',
+				'required' => 'Preenchimento Obrigatório',
+				'invalid' => 'Preenchimento Inválido',
+				'success' => 'Contacto Efectuado com Successo',
 			),
 		),
 	),
@@ -332,7 +337,11 @@ return array(
 					'email' => 'Email',
 					'telephone' => 'Telefone',
 					'persons' => 'Nº de Pessoas',
-					'experiences_title' => 'Passeios',
+					'obs' => 'Observações',
+					'obs_label' => '(Opcional)',
+					'subject' => 'Pedido de Voucher',
+					'experiences_title' => 'Passeio',
+					'experiences_label' => 'Selecione o Passeio',
 					'experiences' => array(
 						'1' => 'Catamarã Passeio de Caiaque',
 						'2' => 'Passeio Derradeiro',
@@ -369,7 +378,7 @@ return array(
 		'private_photography_tour' => array(
 			'title' => 'Passeios Fotográficos',
 			'commemtary' => array(
-				'text' => '<i>"Pessoas fazem fotos de qualquer coisa bonita… Fotógrafos fazem fotos bonitas de qualquer coisa.”</i>',
+				'text' => 'Pessoas fazem fotos de qualquer coisa bonita… Fotógrafos fazem fotos bonitas de qualquer coisa.',
 				'author' => 'Rafael Connea Batista',
 			),
 			'text_list' => array(

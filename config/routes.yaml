@@ -42,3 +42,7 @@ send_email:
     path: /send-email/
     controller: App\Controller\SeasirenController::sendEmail
    
+send_voucher:
+    path: /send-voucher/
+    controller: App\Controller\SeasirenController::sendVoucher
+   

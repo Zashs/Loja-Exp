@@ -24,7 +24,7 @@
 		<form id="formContact">
 			<div class="w3-col l12 m12 s12">
 				<div class="w3-padding">
-					<h4>{{pageDesc.sub_title}}</h4>
+					<h4>{{pageDesc.sub_title}}</h4><label class="contact_success w3-text-green w3-hide w3-right"></label>
 				</div>
 				<div class="w3-card-4">	
 					<div class="w3-padding-large">
@@ -35,6 +35,10 @@
 						<div>
 							<label style="text-transform: capitalize;" for="contact_email">{{pageDesc.form.email}}</label><label class="contact_email w3-text-red w3-hide w3-right"></label>
 							<input type="text" id="contact_email" name="contact_email" placeholder="{{pageDesc.form.email}}">
+						</div>
+						<div>
+							<label style="text-transform: capitalize;" for="contact_telephone">{{pageDesc.form.telephone}}</label><label class="contact_telephone w3-text-red w3-hide w3-right"></label>
+							<input type="text" id="contact_telephone" name="contact_telephone" placeholder="{{pageDesc.form.telephone}}">
 						</div>
 						<div>
 							<label style="text-transform: capitalize;" for="contact_message">{{pageDesc.form.message}}</label><label class="contact_message w3-text-red w3-hide w3-right"></label>
