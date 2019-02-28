@@ -94,7 +94,7 @@ return array(
 			'form' => array(
 				'name' => 'nome',
 				'email' => 'email',
-				'message' => 'menssagem',
+				'message' => 'mensagem',
 				'send' => 'Enviar',
 			),
 		),

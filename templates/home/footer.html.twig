@@ -41,6 +41,37 @@
 	
 	<script src="https://www.w3schools.com/lib/w3.js"></script>
 	<script>
+		function formContact(){
+			$('.w3-text-red.w3-right').addClass('w3-hide');
+			$('.w3-overlay').show()
+			setTimeout(function(){
+				$.ajax({
+					url:"{{ path('send_email') }}",
+					type: "POST",
+					data: $('#formContact').serialize(),
+					success: function(data){
+						$('.w3-overlay').hide()
+						if(data.status == 1)
+							console.log('entrou, altamente');
+						else if(data.status == 0)
+						{
+							for(var k in data.data)
+								$('.'+data.data[k]).removeClass('w3-hide').html('Preenchimento Obrigatória');
+						}
+						else
+						{
+							for(var k in data.data)
+								$('.'+data.data[k]).removeClass('w3-hide').html('Preenchimento Inválido');
+						}
+					},
+					error:function(data){
+						$('.w3-overlay').hide()
+						$('#modal-error').removeClass('w3-hide')
+					}
+				})
+			}, 500)
+		}
+
 		var slideIndex = 1;
 		carousel();
 
@@ -60,8 +91,7 @@
 			x[slideIndex-1].style.display = "block"; 
 			setTimeout(carousel, 4000); // Change image every 2 seconds
 		}
-	</script>
-	<script>
+		
 		// Script for side navigation
 		function w3_open() {
 		  var x = document.getElementById("mySidebar");

@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
+use EmailValidator\EmailValidator;
 
 class SeasirenController extends AbstractController
 {
@@ -265,5 +266,112 @@ class SeasirenController extends AbstractController
 		{
 			return $this->redirectToRoute($page,array('page'=>$page, 'pageSub' => $pageSub ));
 		}
+    }
+	
+	public function sendEmail(Request $request, \Swift_Mailer $mailer)
+	{
+                    
+        $err = array();
+        $locale = $request->getlocale();
+        
+        //IF FIELDS IS NULL PUT IN ARRAY AND SEND BACK TO USER
+        $request->request->get('contact_name') ? $name = $request->request->get('contact_name') : $err[] = 'contact_name';
+        $request->request->get('contact_email') ? $email = $request->request->get('contact_email') : $err[] = 'contact_email';
+        $request->request->get('contact_message') ? $address = $request->request->get('contact_message') : $err[] = 'contact_message';
+        
+        if($err){
+            $response = array(
+                'status' => 0,
+                'message' => 'fields empty',
+                'data' => $err,
+                'mail' => null,
+                'locale' => $locale
+            );
+            return new JsonResponse($response);
+        }
+        //NO FAKE DATA
+        $this->noFakeName($name) == 1 ? $err[] = 'contact_name' : false;
+		$this->noFakeEmails($email) == 1 ? $err[] = 'contact_email' : false;
+        //$this->noFakeTelephone($telephone) == 1 ? $err[] = 'TELEPHONE_INVALID' : false;
+        if($err){
+            $response = array(
+                'status' => 2,
+                'message' => 'invalid fields',
+                'data' => $err,
+                'mail' => null,
+                'locale' => $locale
+            );
+            return new JsonResponse($response);
+        }
+        else
+		{
+			$transport = (new \Swift_SmtpTransport($_ENV['EMAIL_SMTP'], $_ENV['EMAIL_PORT'], $_ENV['EMAIL_CERTIFICADE']))
+            ->setUsername($_ENV['EMAIL'])
+            ->setPassword($_ENV['EMAIL_PASS']);
+		
+			$mailer = new \Swift_Mailer($transport);
+						
+			$subject ='Pedido de Informação';
+						
+			$message = (new \Swift_Message($subject))
+            ->setFrom([$_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME']])
+            ->setTo([$request->request->get('contact_email') => $request->request->get('contact_name'), $_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME'] ])
+            ->addPart($subject, 'text/plain')
+            ->setBody(
+                $this->renderView(
+                    'emails/emailContact-'.$locale.'.html.twig',
+                    array(
+                        'name' => $request->request->get('contact_name'),
+                        'email' => $request->request->get('contact_email'),
+                        'message' => $request->request->get('contact_message'),
+                        'logo' => '/assets/images/logo-branco-seasiren-01.svg'
+                    )
+                ),
+                'text/html'
+            );
+            $send = $mailer->send($message);
+        }
+        
+        
+        $response = array(
+            'status' => 1,
+            'message' => 'all valid',
+            'data' =>  'success',
+            'mail' => $send,
+            'locale' => $locale
+		);
+        
+        return new JsonResponse($response);
+        
+    }
+
+    private function noFakeEmails($email)
+	{
+        $invalid = 0;        
+        if($email){
+            $validator = new \EmailValidator\Validator();
+            $validator->isEmail($email) ? false : $invalid = 1;
+            $validator->isSendable($email) ? false : $invalid = 1;
+            $validator->hasMx($email) ? false : $invalid = 1;
+            $validator->hasMx($email) != null ? false : $invalid = 1;
+            $validator->isValid($email) ? false : $invalid = 1;
+        }
+        return $invalid;
+    }
+	
+    private function noFakeName($a)
+	{
+        $invalid = 0;        
+        if($a)
+            $invalid = preg_replace("/[^!@#\$%\^&\*\(\)\[\]:;]/", "", $a);
+        return $invalid;
+    }
+
+    private function noFakeTelephone($a)
+	{
+        $invalid = 0;        
+        if($a)
+            $invalid = preg_replace("/[0-9|\+?]{0,2}[0-9]{5,12}/", "", $a);
+        return $invalid;
     }
 }
