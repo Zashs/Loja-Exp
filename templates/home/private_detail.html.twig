@@ -2,54 +2,137 @@
 
 {% block content %}
 	{% if pageSub == 'gift_voucher' %}
-		<h1>{{pageDesc.title}}</h1>
-		<br>
-		<p>{{pageDesc.text_list.text_1}}</p>
-		<p>{{pageDesc.text_list.text_2}}</p>
-		<p>{{pageDesc.text_list.text_3}}</p>
-		<br>
-		<h3>{{pageDesc.payer.title}}</h3>
-		<br>
-		{{pageDesc.payer.name}}
-		<br>
-		{{pageDesc.payer.surname}}
-		<br>
-		{{pageDesc.payer.email}}
-		<br>
-		{{pageDesc.payer.telephone}}
-		<br>
-		{{pageDesc.payer.persons}}
-		<br>
-		{{pageDesc.payer.experiences_title}}
-		<select>
-		{% for experience in pageDesc.payer.experiences %}
-		  <option value="{{experience}}">{{experience}}</option>
-		{% endfor %}
-		</select> 
-		
-		<br>
-		<h3>{{pageDesc.destiny.title}}</h3>
-		<br>
-		{{pageDesc.destiny.name}}
-		<br>
-		{{pageDesc.destiny.surname}}
-		<br>
-		{{pageDesc.destiny.email}}
-		<br>
-		{{pageDesc.destiny.telephone}}
-		
-		
+		<!-- Página de private gift vouchers-->
+		<div class="w3-row">
+			<div class="w3-col l12 m12 s12">
+				<div class="w3-padding">
+					<h1>{{pageDesc.title}}</h1>
+				</div>
+			</div>
+			<div class="w3-col l12 m12 s12">
+				<div class="w3-row">
+					<div class="w3-col l12 m12 s12">
+						<div class="w3-card-4">
+							<div class="w3-padding-large">
+								<div>
+									<p>{{pageDesc.text_list.text_1}}</p>
+								</div>
+								<div>
+									<p>{{pageDesc.text_list.text_2}}</p>
+								</div>
+								<div>
+									<p>{{pageDesc.text_list.text_3}}</p>
+								</div>
+							</div>
+						</div>
+						<form action="">
+							<div class="w3-col l6 m12 s12 w3-padding-small">
+								<div class="w3-center">
+									<h2>{{pageDesc.payer.title}}</h2>
+								</div>
+								<div class="w3-card-4">	
+									<div class="w3-padding-large">
+										<div>
+											<label for="payer_name">{{pageDesc.payer.name}}</label>
+											<input type="text" id="payer_name" name="payer_name" placeholder="{{pageDesc.payer.name}}">
+										</div>
+										<div>
+											<label for="payer_surname">{{pageDesc.payer.surname}}</label>
+											<input type="text" id="payer_surname" name="payer_surname" placeholder="{{pageDesc.payer.surname}}">
+										</div>
+										<div>
+											<label for="payer_email">{{pageDesc.payer.email}}</label>
+											<input type="text" id="payer_email" name="payer_email" placeholder="{{pageDesc.payer.email}}">
+										</div>
+										<div>
+											<label for="payer_telephone">{{pageDesc.payer.telephone}}</label>
+											<input type="text" id="payer_telephone" name="payer_telephone" placeholder="{{pageDesc.payer.telephone}}">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w3-col l6 m12 s12 w3-padding-small">
+								<div class="w3-center">
+									<h2>{{pageDesc.destiny.title}}</h2>
+								</div>
+								<div class="w3-card-4">	
+									<div class="w3-padding-large">
+										<div>
+											<label for="payer_name">{{pageDesc.destiny.name}}</label>
+											<input type="text" id="payer_name" name="payer_name" placeholder="{{pageDesc.destiny.name}}">
+										</div>
+										<div>
+											<label for="payer_surname">{{pageDesc.destiny.surname}}</label>
+											<input type="text" id="payer_surname" name="payer_surname" placeholder="{{pageDesc.destiny.surname}}">
+										</div>
+										<div>
+											<label for="payer_email">{{pageDesc.destiny.email}}</label>
+											<input type="text" id="payer_email" name="payer_email" placeholder="{{pageDesc.destiny.email}}">
+										</div>
+										<div>
+											<label for="payer_telephone">{{pageDesc.destiny.telephone}}</label>
+											<input type="text" id="payer_telephone" name="payer_telephone" placeholder="{{pageDesc.destiny.telephone}}">
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w3-col l12 m12 s12 w3-padding-small">
+								<div class="w3-card-4">
+									<div class="w3-padding-large" style="display:block;">
+										<div>
+											<label for="payer_name">{{pageDesc.payer.persons}}</label>
+											<input type="text" id="payer_persons" name="payer_persons" placeholder="{{pageDesc.payer.persons}}">
+										</div>
+										<div>
+											<label for="payer_experiences">{{pageDesc.payer.experiences_title}}</label>
+											<select id="payer_experiences" name="payer_experiences">
+												{% for experience in pageDesc.payer.experiences %}
+													<option value="{{experience}}">{{experience}}</option>
+												{% endfor %}
+											</select>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="w3-col l12 m12 s12">
+								<div class="w3-padding-large pull-right">
+									<button type="submit" class="w3-btn w3-green">Enviar(falta traduçao)</button>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>	
 	{% else %}
-		<h1>{{pageDesc.title}}</h1>
-		<!-- ComemtÃ¡rio se existir -->
-		{% if pageSub == 'private_photography_tour' %}
-			<h6 class="w3-center">"{{pageDesc.commemtary.text}}"</h6>
-			<h5 class="pull-right"><b>{{pageDesc.commemtary.author}}</b></h5>
-		{% endif %}
-		<br>
-		{% for i in 0..(pageDesc.text_list|length)-1 %}
-			<p>{{pageDesc.text_list[i].text}}</p>
-		{% endfor %}
-		<br>
+		<!-- Páginas Private-->
+		<div class="w3-row">
+			<div class="w3-col l12 m12 s12">
+				<div class="w3-padding">
+					<h1>{{pageDesc.title}}</h1>
+				</div>
+			</div>
+			<!-- Comemtário existentente em apenas uma das páginas -->
+			{% if pageSub == 'private_photography_tour' %}
+				<div class="w3-col l12 m12 s12">
+					<div class="w3-padding w3-text-center">
+						
+						<h6 class="w3-center">"{{pageDesc.commemtary.text}}"</h6>
+						<h5 class="w3-col w3-twothird w3-right-align"><b>{{pageDesc.commemtary.author}}</b></h5>
+					</div>
+				</div>
+			{% endif %}
+			<div class="w3-col l12 m12 s12">
+				<div class="w3-card-4">
+					<div class="w3-padding-large">
+						{% for i in 0..(pageDesc.text_list|length)-1 %}
+							<div>
+								<p>{{pageDesc.text_list[i].text}}</p>
+							</div>
+						{% endfor %}
+					</div>
+				</div>
+			</div>
+		</div>
 	{% endif %}
 {% endblock %}

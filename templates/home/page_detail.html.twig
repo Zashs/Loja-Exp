@@ -1,13 +1,22 @@
 {% extends "base.html.twig" %}
 {% block content %}
-
-<h1>{{pageDesc.title}}<h1>
-	{{pageDesc.sub_title}}
-	<br>
-	
-	{% for i in 0..(pageDesc.text_list|length)-1 %}
-		<p>{{pageDesc.text_list[i].text}}</p>
-	{% endfor %}
-	
-
+<div class="w3-row">
+	<div class="w3-col l12 m12 s12">
+		<div class="w3-padding">
+			<h1>{{pageDesc.title}}</h1>
+			<h2>{{pageDesc.sub_title}}</h2>
+		</div>
+	</div>
+	<div class="w3-col l12 m12 s12">
+		<div class="w3-card-4">
+			<div class="w3-padding-large">
+				{% for i in 0..(pageDesc.text_list|length)-1 %}
+					<div>
+						<p>{{pageDesc.text_list[i].text}}</p>
+					</div>
+				{% endfor %}
+			</div>
+		</div>
+	</div>
+</div>
 {% endblock %}

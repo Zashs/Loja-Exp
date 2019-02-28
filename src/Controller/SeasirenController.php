@@ -24,7 +24,25 @@ class SeasirenController extends AbstractController
 		$request = $request->getlocale();
 		
 		$pageInfo = array();
-		$pageInfo = array('title'=> $translator->trans('home.title'), 'sub_title' => $translator->trans('home.sub_title'), 'text' => $translator->trans('home.text'));
+		$pageInfo = array('title'=> $translator->trans('home.title'), 
+			'sub_title' => $translator->trans('home.sub_title'),
+			'text' => $translator->trans('home.text'),
+			'contacts' =>array(
+				'title' => $translator->trans('page_detail.contacts.title'),
+				'sub_title' => $translator->trans('page_detail.contacts.sub_title'),
+				'text_list' => array(
+					'text_1' => $translator->trans('page_detail.contacts.text_list.text_1'),
+					'text_2' => $translator->trans('page_detail.contacts.text_list.text_2'),
+					'text_3' => $translator->trans('page_detail.contacts.text_list.text_3'),
+				),
+				'form' => array(
+					'name' => $translator->trans('page_detail.contacts.form.name'),
+					'email' => $translator->trans('page_detail.contacts.form.email'),
+					'message' => $translator->trans('page_detail.contacts.form.message'),
+					'send' => $translator->trans('page_detail.contacts.form.send'),
+				),
+			),
+		);
 		
 		$products = array();
 		$products[] = array('title' => $translator->trans('home.cave_costal.title_unlimited'),'text' => $translator->trans('home.cave_costal.text_unlimited'),'image' => '/assets/images/pano-thumb.jpg');
