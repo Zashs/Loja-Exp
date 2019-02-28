@@ -18,7 +18,7 @@ return array(
 		),
 		'contacts' => 'Contactos',
 	),
-	//traduções da Home
+	//traducoes da Home
 	'home' => array(
 		'title' => 'SECRETO DO ALGARVE',
 		'sub_title' => 'DESCUBRA O LOCAL MAIS',
@@ -126,7 +126,7 @@ return array(
 			'add_info' => array(
 				'title' => 'Informações adicionais',
 				'text_list' => array(
-					'text_1' => 'Partidas diárias da <u>Marina de Portimão</u>',
+					'text_1' => 'Partidas diárias da Marina de Portimão',
 					'text_2' => 'Atividade com duração de 2h30m.',
 					'text_3' => 'Check-in deve ser efetuado até 35 minutos antes da atividade.',
 					'text_4' => 'Todas as nossas atividades são executadas no nosso espaçoso catamarã, com W.C, assentos acolchoados, convés grande e uma mesa suspensa.',
@@ -170,7 +170,7 @@ return array(
 			'add_info' => array(
 				'title' => 'Informação adicional',
 				'text_list' => array(
-					'text_1' => 'Partidas diárias de <u>Portimão Clube Naval</u>.',
+					'text_1' => 'Partidas diárias de Portimão Clube Naval.',
 					'text_2' => 'Passeio de barco com duração de 3.00h.',
 					'text_3' => 'Está incluído o equipamento completo para mergulho.',
 					'text_4' => 'Check-in deve ser efetuado até 15 minutos antes da atividade.',
@@ -215,7 +215,7 @@ return array(
 			'add_info' => array(
 				'title' => 'Informação adicional',
 				'text_list' => array(
-					'text_1' => 'Partidas diárias de <u>Portimão Clube Naval</u>.',
+					'text_1' => 'Partidas diárias de Portimão Clube Naval.',
 					'text_2' => 'Passeio de barco com duração de 2.00h.',
 					'text_3' => 'Check-in deve ser efetuado até 15 minutos antes da atividade.',
 					'text_4' => 'Limitado máximo de 8 pessoas para uma experiência personalizada.',
@@ -258,7 +258,7 @@ return array(
 			'add_info' => array(
 				'title' => 'Informação adicional',
 				'text_list' => array(
-					'text_1' => 'Partidas diárias de <u>Portimão Clube Naval</u>.',
+					'text_1' => 'Partidas diárias de Portimão Clube Naval.',
 					'text_2' => 'Passeio de barco com duração de 2.00h.',
 					'text_3' => 'Check-in deve ser efetuado até 15 minutos antes da atividade.',
 					'text_4' => 'Limitado máximo de 8 pessoas para uma experiência personalizada.',
@@ -336,7 +336,7 @@ return array(
 					'surname' => 'Apelido',
 					'email' => 'Email',
 					'telephone' => 'Telefone',
-					'persons' => 'Nº de Pessoas',
+					'persons' => 'Numero de Pessoas',
 					'obs' => 'Observações',
 					'obs_label' => '(Opcional)',
 					'subject' => 'Pedido de Voucher',
