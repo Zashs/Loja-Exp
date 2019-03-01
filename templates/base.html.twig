@@ -47,7 +47,7 @@
 					<form id="formContact">
 						<div class="w3-col l12 m12 s12">
 							<div class="w3-padding">
-								<h4>{{pageInfo.contacts.sub_title}}</h4><label class="contact_success w3-text-green w3-hide w3-right"></label>
+								<h4>{{pageInfo.contacts.sub_title}}</h4>
 							</div>
 							<div class="w3-card-4">	
 								<div class="w3-padding-large">
@@ -68,6 +68,9 @@
 										<textarea class="w3-large w3-input w3-round w3-border" rows="5"id="contact_message" name="contact_message" placeholder="{{pageInfo.contacts.form.message}}"></textarea>
 									</div>
 								</div>
+							</div>
+							<div class="w3-padding-large pull-left">	
+								<label class="contact_success w3-text-green w3-hide w3-left"></label>
 							</div>
 							<div class="w3-padding pull-right">
 								<span onclick="formContact()" class="w3-btn w3-green">{{pageInfo.contacts.form.send}}</span>
