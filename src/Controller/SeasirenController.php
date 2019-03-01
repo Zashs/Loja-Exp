@@ -385,14 +385,14 @@ class SeasirenController extends AbstractController
             return new JsonResponse($response);
         }
         //NO FAKE DATA
-        $this->noFakeName($name) == 1 ? $err[] = 'payer_name' : false;
-        $this->noFakeName($name) == 1 ? $err[] = 'payer_surname' : false;
-        $this->noFakeName($name) == 1 ? $err[] = 'destiny_name' : false;
-        $this->noFakeName($name) == 1 ? $err[] = 'destiny_surname' : false;
-		$this->noFakeEmails($email) == 1 ? $err[] = 'payer_email' : false;
-		$this->noFakeEmails($email) == 1 ? $err[] = 'destiny_email' : false;
-        $this->noFakeTelephone($telephone) == 1 ? $err[] = 'payer_telephone' : false;
-        $this->noFakeTelephone($telephone) == 1 ? $err[] = 'destiny_telephone' : false;
+        $this->noFakeName($payerName) == 1 ? $err[] = 'payer_name' : false;
+        $this->noFakeName($payerSurname) == 1 ? $err[] = 'payer_surname' : false;
+        $this->noFakeName($destinyName) == 1 ? $err[] = 'destiny_name' : false;
+        $this->noFakeName($destinySurname) == 1 ? $err[] = 'destiny_surname' : false;
+		$this->noFakeEmails($payerEmail) == 1 ? $err[] = 'payer_email' : false;
+		$this->noFakeEmails($destinyEmail) == 1 ? $err[] = 'destiny_email' : false;
+        $this->noFakeTelephone($payerTelephone) == 1 ? $err[] = 'payer_telephone' : false;
+        $this->noFakeTelephone($destinyTelephone) == 1 ? $err[] = 'destiny_telephone' : false;
         if($err){
             $response = array(
                 'status' => 2,
@@ -415,7 +415,7 @@ class SeasirenController extends AbstractController
 						
 			$message = (new \Swift_Message($subject))
             ->setFrom([$_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME']])
-            ->setTo([$payerEmail => $payerName.''.$payerSurame, $_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME'] ])
+            ->setTo([$payerEmail => $payerName.' '.$payerSurame, $_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME'] ])
             ->addPart($subject, 'text/plain')
             ->setBody(
                 $this->renderView(
