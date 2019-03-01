@@ -54,7 +54,7 @@
 						if(data.status == 1)
 						{
 							$('.contact_success').removeClass('w3-hide').html('{% trans %}page_detail.contacts.form.success{% endtrans %}');
-							//setTimeout($('.contact_success').addClass('w3-hide'),500);
+							setTimeout($('.contact_success').addClass('w3-hide'),500);
 						}
 						else if(data.status == 0)
 						{
