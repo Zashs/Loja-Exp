@@ -415,14 +415,14 @@ class SeasirenController extends AbstractController
 						
 			$message = (new \Swift_Message($subject))
             ->setFrom([$_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME']])
-            ->setTo([$payerEmail => $payerName.' '.$payerSurame, $_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME'] ])
+            ->setTo([$payerEmail => $payerName.' '.$payerSurname, $_ENV['EMAIL'] => $_ENV['EMAIL_USERNAME'] ])
             ->addPart($subject, 'text/plain')
             ->setBody(
                 $this->renderView(
                     'emails/emailVoucher-'.$locale.'.html.twig',
                     array(
                         'payer_name' => $payerName,
-                        'payer_surname' => $payerSurame,
+                        'payer_surname' => $payerSurname,
                         'payer_email' => $payerEmail,
                         'payer_telephone' => $payerTelephone,
                         'destiny_name' => $destinyName,
