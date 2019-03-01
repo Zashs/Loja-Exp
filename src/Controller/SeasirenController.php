@@ -273,7 +273,7 @@ class SeasirenController extends AbstractController
 		}
     }
 	
-	public function sendEmail(Request $request, \Swift_Mailer $mailer)
+	public function sendEmail(Request $request, \Swift_Mailer $mailer, TranslatorInterface $translator)
 	{
                     
         $err = array();
@@ -352,7 +352,7 @@ class SeasirenController extends AbstractController
         
     }
 	
-	public function sendVoucher(Request $request, \Swift_Mailer $mailer)
+	public function sendVoucher(Request $request, \Swift_Mailer $mailer, TranslatorInterface $translator)
 	{
                     
         $err = array();
