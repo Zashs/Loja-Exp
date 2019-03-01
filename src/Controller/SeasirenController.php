@@ -370,9 +370,9 @@ class SeasirenController extends AbstractController
         $request->request->get('destiny_email') ? $destinyEmail = $request->request->get('destiny_email') : $err[] = 'destiny_email';
         $request->request->get('destiny_telephone') ? $destinyTelephone = $request->request->get('destiny_telephone') : $err[] = 'destiny_telephone';
 		//EXTRA INFO
-        $request->request->get('payer_persons') ? $numberPersons = $request->request->get('payer_message') : $err[] = 'payer_persons';
-        $request->request->get('payer_experiences') && strpos($request->request->get('payer_experiences'), 'Selec') === false ? $experience = $request->request->get('payer_message') : $err[] = 'payer_experiences';
-        $request->request->get('payer_obs') ? $observations = $request->request->get('payer_message') : $observations = '';
+        $request->request->get('payer_persons') ? $numberPersons = $request->request->get('payer_persons') : $err[] = 'payer_persons';
+        $request->request->get('payer_experiences') && strpos($request->request->get('payer_experiences'), 'Selec') === false ? $experience = $request->request->get('payer_experiences') : $err[] = 'payer_experiences';
+        $request->request->get('payer_obs') ? $observations = $request->request->get('payer_obs') : $observations = '';
         
         if($err){
             $response = array(
